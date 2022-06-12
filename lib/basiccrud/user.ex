@@ -20,10 +20,9 @@ defmodule Basiccrud.User do
   end
 
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
-  def changeset(user, params), do: create_changeset(user, params)
 
-  defp create_changeset(module_or_user, params) do
-    module_or_user
+  defp create_changeset(module, params) do
+    module
     |> cast(params, @required_params)
   end
 end
