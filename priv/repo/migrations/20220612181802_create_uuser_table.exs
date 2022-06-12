@@ -6,6 +6,7 @@ defmodule Basiccrud.Repo.Migrations.CreateUuserTable do
       add :id, :uuid, primary_key: true
       add :name, :string
       add :password, :string
+      add :email, :string
       add :age, :integer
 
       timestamps()

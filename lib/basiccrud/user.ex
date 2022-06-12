@@ -8,10 +8,11 @@ defmodule Basiccrud.User do
     field :name, :string
     field :password, :string
     field :age, :integer
+    field :email, :string
     timestamps()
   end
 
-  @required_params [:name, :password]
+  @required_params [:name, :password, :age, :email]
 
   def build(params) do
     params
@@ -22,7 +23,11 @@ defmodule Basiccrud.User do
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
 
   defp create_changeset(module, params) do
+
     module
     |> cast(params, @required_params)
+    |> validate_required(@required_params)
   end
+
+
 end
