@@ -1,5 +1,18 @@
-# Basiccrud
+# Basic Crud API
+This is an basic CREATE, UPDATE, DELETE REST API with ELIXIR!
 
+Initial proposal
+```
+create user w/ name, pass, age
+delete user by id
+update user info info by user
+```
+
+```
+<in development>
+```
+
+# TODO
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
