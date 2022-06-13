@@ -12,7 +12,9 @@ defmodule Basiccrud.User do
     timestamps()
   end
 
-  @required_params [:name, :password, :age, :email]
+  @params_default [:name, :password, :age, :email]
+
+  @required_params [:email, :password]
 
   def build(params) do
     params
@@ -25,7 +27,7 @@ defmodule Basiccrud.User do
   defp create_changeset(module, params) do
 
     module
-    |> cast(params, @required_params)
+    |> cast(params, @params_default)
     |> validate_required(@required_params)
   end
 
