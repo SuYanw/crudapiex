@@ -23,14 +23,18 @@ defmodule Basiccrud.User do
     |> apply_action(:insert)
   end
 
-  def changeset(params), do: create_changeset(%__MODULE__{}, params)
-  def changeset(user, params), do: create_changeset(user, params)
+  def changeset(params), do: create_changeset(%__MODULE__{}, params, :create)
+  def changeset(user, params), do: create_changeset(user, params, :update)
 
   @required_params [:email, :password]
-  defp create_changeset(module, params) do
+  defp create_changeset(module, params, :create) do
 
     module
     |> cast(params, @params_default)
     |> validate_required(@required_params)
+  end
+  defp create_changeset(module, params, :update) do
+    module
+    |> cast(params, @params_default)
   end
 end
