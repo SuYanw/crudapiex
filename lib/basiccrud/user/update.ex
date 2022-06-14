@@ -1,7 +1,9 @@
 defmodule Basiccrud.User.Update do
 
-  def call(params) do
-    params
+  #alias Basiccrud.{User, Repo}
+
+  def call(%{"id"=> uuid} = params) do
+    uuid
   end
 
 
