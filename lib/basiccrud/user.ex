@@ -3,6 +3,8 @@ defmodule Basiccrud.User do
   import Ecto.Changeset
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
+  @required_params [:email, :password]
+
 
   schema "users" do
     field :name, :string
@@ -14,7 +16,6 @@ defmodule Basiccrud.User do
 
   @params_default [:name, :password, :age, :email]
 
-  @required_params [:email, :password]
 
   def build(params) do
     params
@@ -23,6 +24,7 @@ defmodule Basiccrud.User do
   end
 
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
+  #def changeset(user, params), do: create_changeset(user, params)
 
   defp create_changeset(module, params) do
 
@@ -30,6 +32,4 @@ defmodule Basiccrud.User do
     |> cast(params, @params_default)
     |> validate_required(@required_params)
   end
-
-
 end
