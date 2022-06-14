@@ -9,10 +9,16 @@ defmodule Basiccrud.User.Update do
     end
   end
 
-  defp update(params) do
-    outfile =
-      params
-      |> Basiccrud.User.changeset()
-    outfile
+  defp update(%{"id" => uuid} = params) do
+    case Basiccrud.Repo.get(Basiccrud.User, uuid) do
+      nil -> {:error, "User not found!"}
+      user -> update_user(user, params)
+    end
+  end
+
+  defp update_user(user, params) do
+    user
+    |> Basiccrud.User.changeset(params)
+    |> Basiccrud.Repo.update()
   end
 end

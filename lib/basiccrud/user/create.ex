@@ -3,15 +3,12 @@ defmodule Basiccrud.User.Create do
 
   def call(params) do
     params
-    |> validate_before_create()
+
     |> Basiccrud.User.build()
+    |> validate_before_create()
   end
 
-  defp validate_before_create({:ok, struct}) do
-    struct
-
-    |> Basiccrud.Repo.insert()
-  end
+  defp validate_before_create({:ok, struct}), do: Basiccrud.Repo.insert(struct)
 
   defp validate_before_create({:error, _struct} = error), do:  error
 end
