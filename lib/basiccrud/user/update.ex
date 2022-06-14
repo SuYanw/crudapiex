@@ -1,10 +1,18 @@
 defmodule Basiccrud.User.Update do
 
-  #alias Basiccrud.{User, Repo}
+
 
   def call(%{"id"=> uuid} = params) do
-    uuid
+    case Ecto.UUID.cast(uuid) do
+      :error -> {:error, "Invalid User ID Format!"}
+      {:ok, _uuid} -> update(params)
+    end
   end
 
-
+  defp update(params) do
+    outfile =
+      params
+      |> Basiccrud.User.changeset()
+    outfile
+  end
 end
