@@ -10,7 +10,7 @@ defmodule Basiccrud.User.Get do
     def validate_before_fetch(uuid) do
         case Basiccrud.Repo.get(Basiccrud.User, uuid) do
             nil -> {:error, "User not found"}
-            _ -> fetch_user(uuid) 
+            user -> user
         end
     end
 
