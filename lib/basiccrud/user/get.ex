@@ -1,5 +1,5 @@
 defmodule Basiccrud.User.Get do
-    
+
     def call(uuid) do
         case Ecto.UUID.cast(uuid) do
             :error -> {:error, "Invalid User ID Format!"}

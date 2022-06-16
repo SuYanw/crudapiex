@@ -3,7 +3,7 @@ defmodule BasiccrudWeb.UserController do
 
     import Plug.Conn
 
-    def show(conn, %{"id" => id}) do
+    def show(conn, %{"userid" => id}) do
         id
         |> Basiccrud.get_user()
         |> handle_response(conn, "show.json", :ok)

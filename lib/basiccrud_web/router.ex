@@ -8,7 +8,7 @@ defmodule BasiccrudWeb.Router do
   scope "/api", BasiccrudWeb do
     pipe_through :api
 
-    post "/users", UserController, :show
+    resources "/user/:userid", UserController, only: [:show, :delete, :update]
   end
 
   # Enables LiveDashboard only for development
