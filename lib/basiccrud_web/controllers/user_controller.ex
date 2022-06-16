@@ -15,6 +15,12 @@ defmodule BasiccrudWeb.UserController do
         |> handle_response(conn, "show.json", :ok)
     end
 
+    def create(conn, params) do
+      params
+      |> Basiccrud.create_user()
+      |> handle_response(conn, "show.json", :ok)
+    end
+
     defp handle_response({:ok, user}, conn, view, status) do
         conn
         |> put_status(status)
