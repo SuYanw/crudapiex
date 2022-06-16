@@ -11,6 +11,7 @@ defmodule BasiccrudWeb.Router do
     get "/user/:userid", UserController, :show
     post "/user/update", UserController, :update
     post "/user/create", UserController, :create
+    get "/user/delete/:userid", UserController, :delete
   end
 
   # Enables LiveDashboard only for development

@@ -10,8 +10,10 @@ update user info info by user
 
 ### Routes
 ```
+/api/user/user_id
 /api/user/create name="name" age=22 email="user@domain.com.br" password="123456"
 /api/user/update id="user-uuid" name="new_name" age=100 email="newemail@email.com.br"
+/api/user/delete/user_id
 ```
 
 # TODO
