@@ -12,7 +12,7 @@ defmodule BasiccrudWeb.UserController do
     def update(conn, params) do
         params
         |> Basiccrud.update_user()
-        |> handle_response(conn, "show.json", :ok)
+        |> handle_response(conn, "update.json", :ok)
     end
 
     def create(conn, params) do
@@ -24,7 +24,7 @@ defmodule BasiccrudWeb.UserController do
     def delete(conn,  %{"userid" => id}) do
         id
         |> Basiccrud.delete_user()
-        |> handle_response(conn, "show.json", :ok)
+        |> handle_response(conn, "delete.json", :ok)
     end
 
     defp handle_response({:ok, user}, conn, view, status) do
