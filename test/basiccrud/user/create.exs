@@ -1,6 +1,11 @@
 defmodule Basiccrud.User.CreateTest do
     use Basiccrud.DataCase
 
+    setup do
+        # getting a connection w/ db
+        :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
+    end
+    
     describe "call/1" do
         test "when all params are valid, create a user" do
             
