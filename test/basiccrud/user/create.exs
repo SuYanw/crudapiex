@@ -7,6 +7,7 @@ defmodule Basiccrud.User.CreateTest do
     end
     
     describe "call/1" do
+
         test "when all params are valid, create a user" do
             
             params = %{name: "Glaubert", password: "123456", age: 30, email: "glaubert@domain.com.br"}
