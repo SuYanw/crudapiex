@@ -10,6 +10,7 @@ update user info info by user
 ```
 
 ### Routes
+This is example for utilizing this project:
 ```
 /api/user/user_id
 /api/user/create name="name" age=22 email="user@domain.com.br" password="123456"
@@ -17,6 +18,15 @@ update user info info by user
 /api/user/delete/user_id
 ```
 
+
+### Mixs Test
+To run tests, you can run
+```
+mix test/basiccrud/user/get.exs
+mix test/basiccrud/user/update.exs
+mix test/basiccrud/user/delete.exs
+mix test/basiccrud/user/create.exs
+```
 # TODO
 To start your Phoenix server:
 
