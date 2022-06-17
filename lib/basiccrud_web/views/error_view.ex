@@ -1,6 +1,11 @@
 defmodule BasiccrudWeb.ErrorView do
   use BasiccrudWeb, :view
 
+  def render("400.json", %{result: msg}) do
+    %{
+       message: msg
+    }
+  end
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
   # def render("500.json", _assigns) do

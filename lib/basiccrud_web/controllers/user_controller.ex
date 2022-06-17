@@ -3,6 +3,8 @@ defmodule BasiccrudWeb.UserController do
 
     import Plug.Conn
 
+    action_fallback BasiccrudWeb.FallbackController
+
     def show(conn, %{"userid" => id}) do
         id
         |> Basiccrud.get_user()
