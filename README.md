@@ -2,6 +2,7 @@
 This is an basic CREATE, UPDATE, DELETE REST API with ELIXIR!
 
 Initial proposal
+The initial proposial is learning Elixir and Phoenix for API dev. see bellow the options for this repository.
 ```
 create user w/ name, pass, age
 delete user by id
