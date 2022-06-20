@@ -18,8 +18,8 @@ defmodule BasiccrudWeb.GetTest do
             {:ok, user} = Basiccrud.create_user(test_user_params)
             {:ok, uuid} = Map.fetch(user, :id) 
 
-            IO.puts("http://localhost:4000/users/#{uuid}")
-            #assert "uuid: #{uuid}" = "1234"
+            string = "http://localhost:4000/users/api/#{uuid}"
+            assert "123" == string
 
             #delete user created
             uuid
