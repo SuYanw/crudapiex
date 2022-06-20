@@ -1,13 +1,17 @@
 defmodule BasiccrudWeb.GetTest do
-    use Basiccrud.DataCase
+
+    use BasiccrudWeb.ConnCase
 
     setup do
         # getting a connection w/ db
-        :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
+        :ok = Ecto.Adapters.SQL.Sandbox.checkout(Basiccrud.Repo)
     end
 
     describe "get/1" do
-        test "When has sended valid params, return user" do
+        test "When has sended valid params, return user", %{conn: conn} do
+
+            
+
             test_user_params = %{
                         name: "Glaubert", 
                         password: "123456", 
@@ -16,14 +20,18 @@ defmodule BasiccrudWeb.GetTest do
                     }
             
             {:ok, user} = Basiccrud.create_user(test_user_params)
-            {:ok, uuid} = Map.fetch(user, :id) 
+            {:ok, userid} = Map.fetch(user, :id) 
 
-            string = "http://localhost:4000/users/api/#{uuid}"
-            assert "123" == string
+           reply =
+               conn
+               |> Routes.user_path(:show, %Basiccrud.User{id: userid})
+
+
+            assert "123" == userid
 
             #delete user created
-            uuid
-            |> Basiccrud.delete_user()
+            # uuid
+            # |> Basiccrud.delete_user()
         end
     end
 end
