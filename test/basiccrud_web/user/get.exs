@@ -10,8 +10,6 @@ defmodule BasiccrudWeb.GetTest do
     describe "get/1" do
         test "When has sended valid params, return user", %{conn: conn} do
 
-            
-
             test_user_params = %{
                         name: "Glaubert", 
                         password: "123456", 
@@ -21,19 +19,40 @@ defmodule BasiccrudWeb.GetTest do
             
             {:ok, %Basiccrud.User{id: id}} = Basiccrud.create_user(test_user_params)
 
-           reply =
-               conn
-               |> Basiccrud.User.Get.validate_before_fetch(Routes.user_path(conn, :show, id))
-               |> json_response(:ok)
+            reply = 
+                conn
+                |> get(Routes.user_path(conn, :show, id))
+                |> json_response(:ok)
+                    
+            assert %{"age" => 30, "email" => "glaubert@domain.com.br", "id" => _id, "name" => "Glaubert"} = reply
 
-            assert %{
-                    "id" => _id, 
-                    "name" => 
-                    } = reply
+            id
+                |> Basiccrud.delete_user()
+        end
+        test "When has sended invalid id, return error", %{conn: conn} do
 
-            #delete user created
-            # uuid
-            # |> Basiccrud.delete_user()
+            id = "1234"
+
+            reply = 
+                conn
+                |> get(Routes.user_path(conn, :show, id))
+                |> json_response(:bad_request)
+                    
+            assert %{"message" => "Invalid User ID Format!"} = reply
+            
+        end
+
+        test "When has sended unkown id, return error", %{conn: conn} do
+
+            id = Ecto.UUID.generate()
+
+            reply = 
+                conn
+                |> get(Routes.user_path(conn, :show, id))
+                |> json_response(:bad_request)
+                    
+            assert %{"message" => "User not found"} = reply
+            
         end
     end
 end
