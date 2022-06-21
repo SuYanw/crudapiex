@@ -19,15 +19,17 @@ defmodule BasiccrudWeb.GetTest do
                         email: "glaubert@domain.com.br"
                     }
             
-            {:ok, user} = Basiccrud.create_user(test_user_params)
-            {:ok, userid} = Map.fetch(user, :id) 
+            {:ok, %Basiccrud.User{id: id}} = Basiccrud.create_user(test_user_params)
 
            reply =
                conn
-               |> Routes.user_path(:show, %Basiccrud.User{id: userid})
+               |> Basiccrud.User.Get.validate_before_fetch(Routes.user_path(conn, :show, id))
+               |> json_response(:ok)
 
-
-            assert "1253" == userid
+            assert %{
+                    "id" => _id, 
+                    "name" => 
+                    } = reply
 
             #delete user created
             # uuid
