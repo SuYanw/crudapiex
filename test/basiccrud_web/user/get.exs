@@ -27,7 +27,7 @@ defmodule BasiccrudWeb.GetTest do
                |> Routes.user_path(:show, %Basiccrud.User{id: userid})
 
 
-            assert "123" == userid
+            assert "1253" == userid
 
             #delete user created
             # uuid
