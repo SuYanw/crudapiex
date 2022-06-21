@@ -32,19 +32,14 @@ defmodule BasiccrudWeb.CreateTest do
 
             test_user_params = %{
                         "name" => "Glaubert", 
-                        "password" => "123456", 
-                        "age" => 30
+                        "email" => "glaubert@domain.com.br"
                     }
             
             reply = 
                 conn
                 |> post(Routes.user_path(conn, :create, test_user_params))
-                    
-            assert "1234" = reply
-
-            # #delete user-test
-            # id
-            # |> Basiccrud.delete_user()
-        end
+                |> json_response(:error)
+            
+            assert "asdf" = reply
     end
 end
