@@ -28,7 +28,7 @@ defmodule BasiccrudWeb.CreateTest do
                 |> Basiccrud.delete_user()
         end
 
-        test "When has sended invalid params, create user", %{conn: conn} do
+        test "When has sended params without password, return specific error", %{conn: conn} do
 
             test_user_params = %{
                         "name" => "Glaubert", 
@@ -44,5 +44,6 @@ defmodule BasiccrudWeb.CreateTest do
             assert %{"message" => "Password field is missing"} = reply
 
         end
+
     end
 end
