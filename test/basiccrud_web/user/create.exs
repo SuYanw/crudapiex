@@ -36,12 +36,12 @@ defmodule BasiccrudWeb.CreateTest do
                         "email" => "glaubert@domain.com.br"
                     }
             
-                    reply = 
-                    conn
-                    |> post(Routes.user_path(conn, :create, test_user_params))
-                    |> json_response(:ok)
-                        
-                assert "error" = reply
+            reply = 
+                conn
+                |> post(Routes.user_path(conn, :create, test_user_params))
+                |> json_response(:bad_request)
+
+            assert %{"message" => "Password field is missing"} = reply
 
         end
     end

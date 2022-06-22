@@ -19,10 +19,10 @@ defmodule Basiccrud.User.Create do
 
   defp validate_errors(atom) do
     case atom do
-      :password -> "Password field is missing"
-      :name -> "Name field is missing"
-      :age -> "User age is missing"
-      :email -> "User email is missing"
+      :password -> {:error, "Password field is missing"}
+      :name -> {:error, "Name field is missing"}
+      :age -> {:error, "User age is missing"}
+      :email -> {:error, "User email is missing"}
     end
   end
 end
