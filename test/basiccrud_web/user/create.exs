@@ -30,19 +30,19 @@ defmodule BasiccrudWeb.CreateTest do
 
         test "When has sended invalid params, create user", %{conn: conn} do
 
-
             test_user_params = %{
                         "name" => "Glaubert", 
                         "age" => 30, 
                         "email" => "glaubert@domain.com.br"
                     }
             
-            reply = 
-                conn
-                |> post(Routes.user_path(conn, :create, test_user_params))
-                |> json_response(:bad_request)
-            
-            assert "1234" = reply
+                    reply = 
+                    conn
+                    |> post(Routes.user_path(conn, :create, test_user_params))
+                    |> json_response(:ok)
+                        
+                assert "error" = reply
+
         end
     end
 end
