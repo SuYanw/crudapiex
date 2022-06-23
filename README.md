@@ -27,6 +27,16 @@ mix test/basiccrud/user/update.exs
 mix test/basiccrud/user/delete.exs
 mix test/basiccrud/user/create.exs
 ```
+
+For testing controllers, you can run
+```
+test/basiccrud_web/user/update.exs
+test/basiccrud_web/user/create.exs
+test/basiccrud_web/user/get.exs
+test/basiccrud_web/user/delete.exs
+```
+
+
 # TODO
 To start your Phoenix server:
 

@@ -54,7 +54,7 @@ defmodule BasiccrudWeb.UpdateTest do
                     |> post(Routes.user_path(conn, :update, new_struct))
                     |> json_response(:bad_request)
 
-            #assert new_struct = Basiccrud.Repo.get(Basiccrud.User, id)
+
             assert %{"message" => "User not found!"} = reply
 
         end
